@@ -29,17 +29,17 @@ namespace AdventOfCode2020.Day1
 		private static List<int> GetNumbersWithSumX(List<int> inputs, int sum, int quantityToSum)
 		{
 			var partial = new int[quantityToSum];
-			return GetNumbersWithSumX(inputs, partial, sum, quantityToSum - 1, quantityToSum - 1, 0);
+			return GetNumbersWithSumX(inputs, partial, sum, quantityToSum - 1, 0);
 		}
 
-		private static List<int> GetNumbersWithSumX(List<int> inputs, int[] partial, int sum, int initial, int remaining, int start)
+		private static List<int> GetNumbersWithSumX(List<int> inputs, int[] partial, int sum, int remaining, int start)
 		{
 			for (int i = start; i < inputs.Count; i++)
 			{
 				partial[remaining] = inputs[i];
 				if (remaining != 0)
 				{
-					var result = GetNumbersWithSumX(inputs, partial, sum, initial, remaining - 1, i + 1);
+					var result = GetNumbersWithSumX(inputs, partial, sum, remaining - 1, i + 1);
 					if (result != null)
 						return result;
 				}
